@@ -52,11 +52,14 @@ nav ul li a:before{
     background: var(--decoration-color);
     position:absolute;
     bottom:-10px; 
-    /* alto y ancho=0 */
-    /* transition: ; */
+    height: 3px;
+
+    width: 0; /* empieza invisible */
+    left: 0;
+    transition: width 0.4s ease; /* crece suavemente */
 }
 nav ul li a:hover::before{
-    /* ancho final */
+    width: 100%; 
 }
 
 /* Barra redes */
@@ -75,8 +78,14 @@ nav ul li a:hover::before{
     color:var(--secondary-color);
     background: var(--primary-color);
     padding: 10px 15px;
-    text-decoration: none;
-    /* transition: ; */
+    text-decoration: none; /* transition: ; */
+
+    transition: transform 0.3s ease, padding 0.3s ease;  
+}
+
+.social ul li a:hover{
+    transform: translateX(5px);      /* se desplaza levemente a la derecha */
+    padding: 10px 20px;              /* crece un poco el padding */
 }
 
 .social ul li .icon-facebook {background:#3b5998;} /* Establecemos los colores de cada red social, aprovechando su class */
@@ -84,11 +93,6 @@ nav ul li a:hover::before{
 .social ul li .icon-instagram {background: #E4405F;}
 .social ul li .icon-whatsapp {background: #25D366;}
 .social ul li .icon-mail {background: #666666;}
-
-.social ul li a:hover{
-    /* transform: ; */
-    /* padding: ; */
-}
 
 
   /* Contenido */
@@ -131,6 +135,13 @@ nav ul li a:hover::before{
     border-left: 10px solid rgba(66,139,202,.2);
      /* animation: ; */
  }
-/* keyframes
-    crear la animación con la rotación desde el momento 0 y momento 100
- */
+/* keyframes crear la animación con la rotación desde el momento 0 y momento 100 */
+/* SPINNER: keyframes + animation */
+@keyframes girar {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    animation: girar 1s linear infinite;
+}
